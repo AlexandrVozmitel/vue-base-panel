@@ -10,11 +10,16 @@
 
 			<button class="btn btn-dark btn-lg btn-block">Reset</button>
 
+			<p class="forgot-password text-right mt-2 mb-4">
+				<router-link to="/sign-in">Sign in?</router-link>
+			</p>
+
 		</form>
 	</div>
 </template>
 <style>
 	.box {
+		text-align: center;
 		margin-top: 10%;
 		position: center;
 		width: 20%;

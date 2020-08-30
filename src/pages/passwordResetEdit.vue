@@ -15,6 +15,7 @@
 </template>
 <style>
 	.box {
+		text-align: center;
 		margin-top: 10%;
 		position: center;
 		width: 20%;

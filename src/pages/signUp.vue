@@ -33,5 +33,6 @@
 		position: center;
 		width: 20%;
 		background: #ffffff;
+		text-align: center;
 	}
 </style>
