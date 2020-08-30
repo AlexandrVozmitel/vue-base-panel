@@ -20,7 +20,9 @@
 					</b-nav-item-dropdown>
 				</b-navbar-nav>
 		</b-navbar>
-		<slot />
+		<b-container fluid="fluid">
+			<slot />
+		</b-container>
 	</div>
 </template>
 <style>

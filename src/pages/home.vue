@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<b-container fluid>
-			123
-		</b-container>
+		123
 	</div>
 </template>

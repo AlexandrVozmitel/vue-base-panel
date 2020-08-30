@@ -1,5 +1,5 @@
 <template>
-<div>
+	<b-container fluid="sm">
 		<slot/>
-</div>
+	</b-container>
 </template>
