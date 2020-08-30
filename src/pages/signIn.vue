@@ -1,41 +1,32 @@
 <template>
-    <div class="box ml-auto mr-auto">
-        <form>
+    <div>
+        <b-form>
             <h3>Sign In</h3>
 
-            <div class="form-group">
-                <label>Login
-                    <input class="form-control form-control-lg"/>
-                </label>
-            </div>
+            <b-form-group
+                label="Login"
+            >
+                <b-form-input></b-form-input>
+            </b-form-group>
+            <b-form-group
+                label="Password"
+            >
+                <b-form-input type="password"></b-form-input>
+            </b-form-group>
 
-            <div class="form-group">
-                <label>Password
-                    <input type="password" class="form-control form-control-lg"/>
-                </label>
-            </div>
+            <b-button block type="submit" variant="dark">Sign In</b-button>
 
-            <button class="btn btn-dark btn-lg btn-block">Sign In</button>
-            <b-row>
-            <b-col class="sign-up text-left mt-2 mb-4">
-                <router-link to="/sign-up">Sign up?</router-link>
-            </b-col>
-            <b-col class="forgot-password text-right mt-2 mb-4">
-                <router-link to="/password-reset">Forgot password ?</router-link>
-            </b-col>
+            <b-row class="mt-3">
+                <b-col>
+                    <router-link :to="{name: 'signUp'}">Sign up?</router-link>
+                </b-col>
+                <b-col class="text-right">
+                    <router-link :to="{name: 'passwordReset'}">Forgot password ?</router-link>
+                </b-col>
             </b-row>
-        </form>
+        </b-form>
     </div>
 </template>
 <script>
 
 </script>
-<style>
-    .box {
-        text-align: center;
-        margin-top: 10%;
-        position: center;
-        width: 20%;
-        background: #ffffff;
-    }
-</style>
