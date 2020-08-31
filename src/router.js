@@ -50,18 +50,20 @@ const routes = [
       layout: 'main',
     },
   },
+
+  // Админские маршруты
   {
-    path: '/users',
-    name: 'users', // Таблица с пользователями
-    component: () => import('./pages/users.vue'),
+    path: '/admin/users',
+    name: 'userList', // Таблица с пользователями
+    component: () => import('./pages/admin/userList.vue'),
     meta: {
       layout: 'main',
     },
   },
   {
-    path: '/user/:id',
-    name: 'user-info', // Инфо о юзере
-    component: () => import('./pages/userInfo.vue'),
+    path: '/admin/user/:id',
+    name: 'userEdit', // Редактирование пользователя
+    component: () => import('./pages/admin/userEdit.vue'),
     meta: {
       layout: 'main',
     },
