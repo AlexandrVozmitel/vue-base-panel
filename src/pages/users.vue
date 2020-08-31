@@ -6,56 +6,59 @@
                 fixed="fixed"
                 :fields="fields"
                 :items="items">
-            <template v-slot:cell(actions)="data">
-                <b-button :to="{name: 'user-info', params: {id: data.value},}">Изменить</b-button>
+            <template v-slot:cell(id)="data">
+                <b-button  v-b-modal.data.value>Права</b-button>
+                <b-modal :id="data.value" title="Изменение">
+                    <user-info/>
+                </b-modal>
+                <b-button :v-on:click="deleteUser(data.value)">Удалить</b-button>
             </template>
         </b-table>
     </div>
 </template>
 
 <script>
+    import UserInfo from "./userInfo";
     export default {
+        components: {UserInfo},
+        created() {
+            this.getRequest()
+        },
         data(){
             return {
                 fields: [
-                    {
-                        label: 'Id',
-                        key: 'id',
-                        sortable: false
-                    },
                     {
                         label: 'Name',
                         key: 'name',
                         sortable: true
                     },
                     {
-                        label: 'Age',
-                        key:'age',
-                        type: 'number',
+                        label: 'Code',
+                        key:'code',
                         sortable: true
-                    },
-                    {
-                        label: 'Login',
-                        key:'login',
-                        sortable: true
-                    },
-                    {
-                        label: 'Password',
-                        key:'password',
-                        sortable: false
                     },
                     {
                         label: 'Actions',
-                        key:'actions',
+                        key:'id',
                         sortable: false
                     },
                 ],
-                items: [
-                    {id:1, name:"John",age:20,login: 'Top',password:'123',actions:1},
-                    {id:2, name:"Jane",age:24,login: 'Angel',password: '123',actions:2},
-                    {id:3, name:"Susan",age:16,login: 'Death',password: '123',actions:3},
-                ],
+                items: [],
             };
         },
+        methods:{
+            async getRequest() {
+                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group',
+                ).then((response) => {
+                    this.items = response.data.data;
+
+                })
+            },
+            async deleteUser(id){
+                await this.axios.delete('http://api.dev.cmtyomg.com/cto1/host/group-link', {
+                    data:{
+                        id:id,}})
+            },
+        }
     };
 </script>
