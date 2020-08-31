@@ -8,17 +8,10 @@
 				<input />
 			</div>
 
-			<button type="submit" class="btn btn-dark btn-lg btn-block">Change password</button>
+			<b-button block type="submit" variant="dark">Change password</b-button>
 
 		</form>
 	</div>
 </template>
 <style>
-	.box {
-		text-align: center;
-		margin-top: 10%;
-		position: center;
-		width: 20%;
-		background: #ffffff;
-	}
 </style>

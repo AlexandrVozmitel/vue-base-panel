@@ -18,7 +18,7 @@
 				<input type="password" class="form-control form-control-lg" />
 			</div>
 
-			<button type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+			<b-button block type="submit" variant="dark">Sign Up</b-button>
 
 			<p class="forgot-password text-right">
 				Already registered
@@ -28,11 +28,4 @@
 	</div>
 </template>
 <style>
-	.box {
-		margin-top: 10%;
-		position: center;
-		width: 20%;
-		background: #ffffff;
-		text-align: center;
-	}
 </style>

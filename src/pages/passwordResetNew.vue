@@ -8,7 +8,7 @@
 				<input class="form-control form-control-lg" />
 			</div>
 
-			<button class="btn btn-dark btn-lg btn-block">Reset</button>
+			<b-button block type="submit" variant="dark">Reset</b-button>
 
 			<p class="forgot-password text-right mt-2 mb-4">
 				<router-link to="/sign-in">Sign in?</router-link>
@@ -18,11 +18,4 @@
 	</div>
 </template>
 <style>
-	.box {
-		text-align: center;
-		margin-top: 10%;
-		position: center;
-		width: 20%;
-		background: #ffffff;
-	}
 </style>

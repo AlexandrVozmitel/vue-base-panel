@@ -2,7 +2,9 @@
 	<div>
 		<b-navbar toggleable="lg" type="dark" variant="dark">
 			<b-navbar-brand href="#">LOGO</b-navbar-brand>
-				<b-navbar-nav>
+			<b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+			<b-collapse id="nav-collapse" is-nav>
+			<b-navbar-nav>
 					<b-nav-item>
 						Страничка
 					</b-nav-item>
@@ -19,6 +21,7 @@
 						<b-dropdown-item :to="{name:'signIn'}">Sign Out</b-dropdown-item>
 					</b-nav-item-dropdown>
 				</b-navbar-nav>
+			</b-collapse>
 		</b-navbar>
 		<b-container fluid="fluid">
 			<slot />
@@ -26,8 +29,8 @@
 	</div>
 </template>
 <style>
-	.hek{
-		width:100%;
+	.hek {
+		width: 100%;
 		text-align: center;
 	}
 </style>
