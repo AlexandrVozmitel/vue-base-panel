@@ -12,8 +12,12 @@
                                     <b-form-input>
 
                                     </b-form-input>
-                                    <label>Code</label>
-                                    <b-form-input type="number">
+                                    <label>Login</label>
+                                    <b-form-input>
+
+                                    </b-form-input>
+                                    <label>Mail</label>
+                                    <b-form-input>
 
                                     </b-form-input>
                                 </b-col>
@@ -24,11 +28,11 @@
                         <b-card>
                             <b-input-group>
                                 <b-col>
-                                    <label>Id</label>
+                                    <label>Group</label>
                                     <b-form-input>
 
                                     </b-form-input>
-                                    <label>Что-то еще</label>
+                                    <label>Password</label>
                                     <b-form-input>
 
                                     </b-form-input>
@@ -45,9 +49,6 @@
 <script>
     export default {
         name:'userInfo',
-        methods:{
-
-        },
     }
 </script>
 <style>

@@ -6,10 +6,6 @@
                 fixed="fixed"
                 :fields="fields"
                 :items="items">
-            <template v-slot:cell(id)="data">
-                <b-button :to="{name: 'userEdit', params: {id: data.value}}">Права</b-button>
-                <b-button :v-on:click="deleteUser(data.value)">Удалить</b-button>
-            </template>
         </b-table>
     </div>
 </template>
@@ -33,7 +29,7 @@
                         sortable: true
                     },
                     {
-                        label: 'Actions',
+                        label: 'Id',
                         key:'id',
                         sortable: false
                     },
@@ -48,11 +44,6 @@
                     this.items = response.data.data;
 
                 })
-            },
-            async deleteUser(id){
-                await this.axios.delete('http://api.dev.cmtyomg.com/cto1/host/group-link', {
-                    data:{
-                        id:id,}})
             },
         }
     };

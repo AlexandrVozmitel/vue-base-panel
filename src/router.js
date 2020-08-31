@@ -40,6 +40,14 @@ const routes = [
       layout: 'empty-center',
     },
   },
+  {
+    path: '/host-group',
+    name: 'hostGroup',
+    component: () => import('./pages/ hostGroup'),
+    meta: {
+      layout: 'main',
+    },
+  },
 
   // Главные маршруты
   {
