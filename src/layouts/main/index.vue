@@ -29,8 +29,4 @@
 	</div>
 </template>
 <style>
-	.hek {
-		width: 100%;
-		text-align: center;
-	}
 </style>

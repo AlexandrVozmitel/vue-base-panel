@@ -50,6 +50,23 @@ const routes = [
       layout: 'main',
     },
   },
+  {
+    path: '/users',
+    name: 'users', // Таблица с пользователями
+    component: () => import('./pages/users.vue'),
+    meta: {
+      layout: 'main',
+    },
+  },
+  {
+    path: '/user/:id',
+    name: 'user-info', // Инфо о юзере
+    component: () => import('./pages/userInfo.vue'),
+    meta: {
+      layout: 'main',
+    },
+  },
+
 
 
 ];

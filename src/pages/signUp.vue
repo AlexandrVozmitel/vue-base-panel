@@ -3,20 +3,23 @@
 		<form>
 			<h3>Sign Up</h3>
 
-			<div class="form-group">
-				<label>Full Name</label>
-				<input type="text" class="form-control form-control-lg"/>
-			</div>
+			<b-form-group
+					label="Full name"
+			>
+				<b-form-input></b-form-input>
+			</b-form-group>
 
-			<div class="form-group">
-				<label>Login</label>
-				<input class="form-control form-control-lg" />
-			</div>
+			<b-form-group
+					label="Login"
+			>
+				<b-form-input></b-form-input>
+			</b-form-group>
 
-			<div class="form-group">
-				<label>Password</label>
-				<input type="password" class="form-control form-control-lg" />
-			</div>
+			<b-form-group
+					label="Password"
+			>
+				<b-form-input></b-form-input>
+			</b-form-group>
 
 			<b-button block type="submit" variant="dark">Sign Up</b-button>
 

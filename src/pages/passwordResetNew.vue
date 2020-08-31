@@ -3,10 +3,11 @@
 		<form>
 			<h3>Password reset</h3>
 
-			<div class="form-group">
-				<label>Login</label>
-				<input class="form-control form-control-lg" />
-			</div>
+			<b-form-group
+					label="Login"
+			>
+				<b-form-input></b-form-input>
+			</b-form-group>
 
 			<b-button block type="submit" variant="dark">Reset</b-button>
 
