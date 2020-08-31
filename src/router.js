@@ -40,14 +40,7 @@ const routes = [
       layout: 'empty-center',
     },
   },
-  {
-    path: '/host-group',
-    name: 'hostGroup',
-    component: () => import('./pages/ hostGroup'),
-    meta: {
-      layout: 'main',
-    },
-  },
+
 
   // Главные маршруты
   {
@@ -58,6 +51,32 @@ const routes = [
       layout: 'main',
     },
   },
+
+  {
+    path: '/host-group',
+    name: 'hostGroup',
+    component: () => import('./pages/host/group'),
+    meta: {
+      layout: 'main',
+    },
+  },
+  {
+    path: '/host-group/:group_id',
+    name: 'hostGroupEdit',
+    component: () => import('./pages/host/groupEdit'),
+    meta: {
+      layout: 'main',
+    },
+  },
+  {
+    path: '/host-group/:group_id/link',
+    name: 'hostGroupLink',
+    component: () => import('./pages/host/groupLink'),
+    meta: {
+      layout: 'main',
+    },
+  },
+
 
   // Админские маршруты
   {
