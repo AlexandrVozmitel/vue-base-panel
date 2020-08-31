@@ -6,8 +6,8 @@
                 fixed="fixed"
                 :fields="fields"
                 :items="items">
-            <template v-slot:cell(actions)="data">
-                <b-button :to="{name: 'user-info', params: {id: data.value},}">Изменить</b-button>
+            <template v-slot:cell(actions)="row">
+                <b-button :to="{name: 'userEdit', params: {id: row.item.id}}">Изменить</b-button>
             </template>
         </b-table>
     </div>
@@ -29,20 +29,20 @@
                         sortable: true
                     },
                     {
-                        label: 'Age',
-                        key:'age',
-                        type: 'number',
-                        sortable: true
-                    },
-                    {
                         label: 'Login',
                         key:'login',
                         sortable: true
                     },
                     {
-                        label: 'Password',
-                        key:'password',
+                        label: 'Email',
+                        key:'email',
                         sortable: false
+                    },
+                    {
+                        label: 'Age',
+                        key:'age',
+                        type: 'number',
+                        sortable: true
                     },
                     {
                         label: 'Actions',
@@ -51,9 +51,9 @@
                     },
                 ],
                 items: [
-                    {id:1, name:"John",age:20,login: 'Top',password:'123',actions:1},
-                    {id:2, name:"Jane",age:24,login: 'Angel',password: '123',actions:2},
-                    {id:3, name:"Susan",age:16,login: 'Death',password: '123',actions:3},
+                    {id:1, name:"John", login: 'Top', email: 'John@test.ru', age: 20},
+                    {id:2, name:"Jane", login: 'Angel', email: 'Jane@mail.com', age: 24},
+                    {id:3, name:"Susan", login: 'Death', email: 'Susan@test.net', age: 16},
                 ],
             };
         },
