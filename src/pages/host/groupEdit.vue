@@ -39,6 +39,11 @@
         created() {
           this.getRequest()
         },
+        props: {
+            group_id: {
+                required: true,
+            },
+        },
         data: () => ({
             id: window.location.pathname.split("/")[2],
             codes:'',

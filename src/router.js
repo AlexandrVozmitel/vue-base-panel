@@ -64,6 +64,7 @@ const routes = [
     path: '/host-group/:group_id',
     name: 'groupEdit',
     component: () => import('./pages/host/groupEdit'),
+    props: true,
     meta: {
       layout: 'main',
     },
@@ -72,6 +73,7 @@ const routes = [
     path: '/host-group/:group_id/link',
     name: 'groupLink',
     component: () => import('./pages/host/groupLink'),
+    props: true,
     meta: {
       layout: 'main',
     },

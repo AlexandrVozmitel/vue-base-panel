@@ -15,6 +15,11 @@
         created() {
             this.getRequest()
         },
+        props: {
+            group_id: {
+                required: true,
+            },
+        },
         data(){
             return {
                 fields: [
