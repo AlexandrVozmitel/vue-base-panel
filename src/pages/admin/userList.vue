@@ -8,7 +8,7 @@
                 :items="items">
             <template v-slot:cell(id)="data">
                 <b-button :to="{name: 'userEdit', params: {id: data.value}}">Права</b-button>
-                <b-button :v-on:click="deleteUser(data.value)">Удалить</b-button>
+                <b-button v-on:click="deleteUser(data.value)">Удалить</b-button>
             </template>
         </b-table>
     </div>
@@ -28,8 +28,18 @@
                         sortable: true
                     },
                     {
-                        label: 'Code',
-                        key:'code',
+                        label: 'Login',
+                        key:'login',
+                        sortable: true
+                    },
+                    {
+                        label: 'Email',
+                        key:'email',
+                        sortable: true
+                    },
+                    {
+                        label: 'Password',
+                        key:'password',
                         sortable: true
                     },
                     {
@@ -43,14 +53,14 @@
         },
         methods:{
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group',
+                await this.axios.get('http://api.dev.cmtyomg.com/cto1/user/list',
                 ).then((response) => {
                     this.items = response.data.data;
 
                 })
             },
             async deleteUser(id){
-                await this.axios.delete('http://api.dev.cmtyomg.com/cto1/host/group-link', {
+                await this.axios.delete('', {
                     data:{
                         id:id,}})
             },
