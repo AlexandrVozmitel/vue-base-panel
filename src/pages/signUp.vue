@@ -45,12 +45,11 @@
 		methods: {
 			async register() {
 				await this.axios.post('http://api.dev.cmtyomg.com/cto1/user',{
-					params:{
 						login: this.login,
-						name: this.name,
-						email: this.email,
-						password: this.password,
-					}}
+                        password: this.password,
+                        email: this.email,
+                        name: this.name,
+					}
 				)
 			},
 		},
