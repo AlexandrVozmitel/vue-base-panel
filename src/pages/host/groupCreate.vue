@@ -9,11 +9,11 @@
                                 <b-input-group>
                                     <b-col>
                                         <label>Name</label>
-                                        <b-form-input v-model="names">
+                                        <b-form-input v-model="name">
 
                                         </b-form-input>
                                         <label>Code</label>
-                                        <b-form-input v-model="codes">
+                                        <b-form-input v-model="code">
 
                                         </b-form-input>
                                     </b-col>
@@ -21,7 +21,7 @@
                             </b-card>
                         </b-col>
                         <b-col>
-                                <b-button class="but" v-on:click="changeGroup">Изменить</b-button>
+                            <b-button class="but" v-on:click="createGroup">Добавить</b-button>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -35,30 +35,15 @@
 
 <script>
     export default {
-
-        created() {
-          this.getRequest()
-        },
         data: () => ({
-            id: window.location.pathname.split("/")[2],
-            codes:'',
-            names:'',
+            code:'',
+            name:'',
         }),
         methods: {
-            async changeGroup() {
-                await this.axios.put('http://api.dev.cmtyomg.com/cto1/host/group', {
-                    data: {
-                        id: this.id,
-                        name: this.names,
-                        code: this.codes,
-                    }
-                })
-            },
-            async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group',
-                ).then((response) => {
-                    this.names = response.data.data[this.id-1].name;
-                    this.codes = response.data.data[this.id-1].code;
+            async createGroup() {
+                await this.axios.post('', {
+                        name: this.name,
+                        code: this.code,
                 })
             },
         },

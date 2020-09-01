@@ -76,6 +76,14 @@ const routes = [
       layout: 'main',
     },
   },
+  {
+    path: '/create-group',
+    name: 'groupCreate',
+    component: () => import('./pages/host/groupCreate'),
+    meta: {
+      layout: 'main',
+    },
+  },
 
 
 
