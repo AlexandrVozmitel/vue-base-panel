@@ -62,7 +62,7 @@ const routes = [
   },
   {
     path: '/host-group/:group_id',
-    name: 'hostGroupEdit',
+    name: 'groupEdit',
     component: () => import('./pages/host/groupEdit'),
     meta: {
       layout: 'main',
@@ -70,12 +70,13 @@ const routes = [
   },
   {
     path: '/host-group/:group_id/link',
-    name: 'hostGroupLink',
+    name: 'groupLink',
     component: () => import('./pages/host/groupLink'),
     meta: {
       layout: 'main',
     },
   },
+
 
 
   // Админские маршруты
