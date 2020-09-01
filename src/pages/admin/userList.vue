@@ -42,11 +42,6 @@
                         sortable: true
                     },
                     {
-                        label: 'Password',
-                        key: 'password',
-                        sortable: true
-                    },
-                    {
                         label: 'Actions',
                         key: 'id',
                         sortable: false
