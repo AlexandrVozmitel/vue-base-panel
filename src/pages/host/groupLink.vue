@@ -5,7 +5,12 @@
                 table-variant="light"
                 fixed="fixed"
                 :fields="fields"
-                :items="items">
+                :items="items"
+                show-empty
+        >
+            <template v-slot:empty>
+                <h4 class="text-center">Нет данных</h4>
+            </template>
         </b-table>
     </div>
 </template>
@@ -44,9 +49,8 @@
                         sortable: true
                     },
                     {
-                        label: 'Action',
-                        key:'id',
-                        sortable: false
+                        label: '',
+                        key:'action',
                     },
                 ],
                 items: [],

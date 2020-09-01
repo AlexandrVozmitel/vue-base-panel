@@ -5,15 +5,16 @@
                 table-variant="light"
                 fixed="fixed"
                 :fields="fields"
+                :items="items"
                 show-empty
-                :items="items">
-            <template v-slot:cell(id)="data">
-                <b-button :to="{name: 'groupEdit', params: {group_id: data.value}}">Изменение</b-button>
-                <b-button v-on:click="deleteGroup(data.value)">Удалить</b-button>
-                <b-button :to="{name: 'groupLink', params: {group_id: data.value}}">Связи</b-button>
+        >
+            <template v-slot:cell(action)="row">
+                <b-button :to="{name: 'groupEdit', params: {group_id: row.item.id}}">Изменение</b-button>
+                <b-button v-on:click="deleteGroup(row.item.id)">Удалить</b-button>
+                <b-button :to="{name: 'groupLink', params: {group_id: row.item.id}}">Связи</b-button>
             </template>
-            <template v-slot:empty="scope">
-                <h4 class="text-center">{{ scope.emptyText="Нет данных" }}</h4>
+            <template v-slot:empty>
+                <h4 class="text-center">Нет данных</h4>
             </template>
         </b-table>
     </div>
@@ -37,25 +38,24 @@
                     sortable: true
                 },
                 {
-                    label: 'Actions',
-                    key:'id',
-                    sortable: false
+                    label: '',
+                    key:'action',
                 },
             ],
             items: [],
         }),
         methods:{
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group',
-                ).then((response) => {
+                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group').then((response) => {
                     this.items = response.data.data;
-
                 })
             },
             async deleteGroup(id){
                 await this.axios.delete('http://api.dev.cmtyomg.com/cto1/host/group', {
-                    data:{
-                        id:id,}})
+                    data: {
+                        id: id
+                    }
+                })
             },
         }
     };

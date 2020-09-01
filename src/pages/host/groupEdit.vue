@@ -45,25 +45,28 @@
             },
         },
         data: () => ({
-            id: window.location.pathname.split("/")[2],
-            codes:'',
-            names:'',
+            codes: '',
+            names: '',
         }),
         methods: {
             async changeGroup() {
                 await this.axios.put('http://api.dev.cmtyomg.com/cto1/host/group', {
                     data: {
-                        id: this.id,
+                        id: this.group_id,
                         name: this.names,
                         code: this.codes,
                     }
                 })
             },
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group',
-                ).then((response) => {
-                    this.names = response.data.data[this.id-1].name;
-                    this.codes = response.data.data[this.id-1].code;
+                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group').then((response) => {
+                    response.data.data.forEach((item) => {
+                        if (item.id == this.group_id) {
+                            console.log(item);
+                            this.names = item.name;
+                            this.codes = item.code;
+                        }
+                    });
                 })
             },
         },
