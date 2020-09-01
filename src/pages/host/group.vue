@@ -5,11 +5,15 @@
                 table-variant="light"
                 fixed="fixed"
                 :fields="fields"
+                show-empty
                 :items="items">
             <template v-slot:cell(id)="data">
                 <b-button :to="{name: 'groupEdit', params: {group_id: data.value}}">Изменение</b-button>
                 <b-button v-on:click="deleteGroup(data.value)">Удалить</b-button>
                 <b-button :to="{name: 'groupLink', params: {group_id: data.value}}">Связи</b-button>
+            </template>
+            <template v-slot:empty="scope">
+                <h4 class="text-center">{{ scope.emptyText="Нет данных" }}</h4>
             </template>
         </b-table>
     </div>

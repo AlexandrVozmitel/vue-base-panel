@@ -2,6 +2,7 @@
     <div>
         <b-table
                 head-variant="light"
+                show-empty
                 table-variant="light"
                 fixed="fixed"
                 :fields="fields"
@@ -9,6 +10,9 @@
             <template v-slot:cell(id)="data">
                 <b-button :to="{name: 'userEdit', params: {id: data.value}}">Права</b-button>
                 <b-button v-on:click="deleteUser(data.value)">Удалить</b-button>
+            </template>
+            <template v-slot:empty="scope">
+                <h4 class="text-center">{{ scope.emptyText="Нет данных" }}</h4>
             </template>
         </b-table>
     </div>
@@ -19,7 +23,7 @@
         created() {
             this.getRequest()
         },
-        data(){
+        data() {
             return {
                 fields: [
                     {
@@ -29,40 +33,41 @@
                     },
                     {
                         label: 'Login',
-                        key:'login',
+                        key: 'login',
                         sortable: true
                     },
                     {
                         label: 'Email',
-                        key:'email',
+                        key: 'email',
                         sortable: true
                     },
                     {
                         label: 'Password',
-                        key:'password',
+                        key: 'password',
                         sortable: true
                     },
                     {
                         label: 'Actions',
-                        key:'id',
+                        key: 'id',
                         sortable: false
                     },
                 ],
                 items: [],
             };
         },
-        methods:{
+        methods: {
             async getRequest() {
                 await this.axios.get('http://api.dev.cmtyomg.com/cto1/user/list',
                 ).then((response) => {
                     this.items = response.data.data;
-
                 })
             },
-            async deleteUser(id){
+            async deleteUser(id) {
                 await this.axios.delete('', {
-                    data:{
-                        id:id,}})
+                    data: {
+                        id: id,
+                    }
+                })
             },
         }
     };
