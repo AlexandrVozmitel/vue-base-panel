@@ -35,6 +35,7 @@ const routes = [
   {
     path: '/password-reset/:code',
     component: () => import('./pages/passwordResetEdit.vue'),
+    props: true,
     meta: {
       auth: 'guest',
       layout: 'empty-center',

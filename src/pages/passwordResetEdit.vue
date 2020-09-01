@@ -13,5 +13,19 @@
 		</form>
 	</div>
 </template>
-<style>
-</style>
+
+<script>
+	export default {
+		props: {
+			code: {
+				required: true,
+			},
+		},
+		data: () => ({
+			//
+		}),
+		methods: {
+			//
+		},
+	}
+</script>
