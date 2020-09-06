@@ -55,7 +55,7 @@
         }),
         methods: {
             register() {
-                this.axios.post('http://api.dev.cmtyomg.com/cto1/register', this.form)
+                this.axios.post('/register', this.form)
                     .then(function (response) { // handle success
                         console.log('response', response);
                     })

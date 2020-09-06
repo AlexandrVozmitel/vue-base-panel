@@ -52,7 +52,7 @@
         },
         methods: {
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/user/list',
+                await this.axios.get('/user/list',
                 ).then((response) => {
                     this.items = response.data.data;
                 })

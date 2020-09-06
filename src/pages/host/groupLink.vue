@@ -59,7 +59,7 @@
         methods:{
             async getRequest() {
                 this.id = window.location.pathname.split("/")[2];
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group-link',{
+                await this.axios.get('/host/group-link',{
                     params:{
                         group_id:this.id,
                     }

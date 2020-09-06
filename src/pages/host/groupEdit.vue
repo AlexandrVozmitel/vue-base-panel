@@ -50,7 +50,7 @@
         }),
         methods: {
             async changeGroup() {
-                await this.axios.put('http://api.dev.cmtyomg.com/cto1/host/group', {
+                await this.axios.put('/host/group', {
                     data: {
                         id: this.group_id,
                         name: this.names,
@@ -59,7 +59,7 @@
                 })
             },
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group').then((response) => {
+                await this.axios.get('/host/group').then((response) => {
                     response.data.data.forEach((item) => {
                         if (item.id == this.group_id) {
                             console.log(item);

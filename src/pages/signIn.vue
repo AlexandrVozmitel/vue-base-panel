@@ -37,7 +37,7 @@
         }),
         methods: {
             login() {
-                this.axios.post('http://api.dev.cmtyomg.com/cto1/login', this.form)
+                this.axios.post('/login', this.form)
                     .then(function (response) { // handle success
                         console.log('response', response);
                     })

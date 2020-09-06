@@ -46,12 +46,12 @@
         }),
         methods:{
             async getRequest() {
-                await this.axios.get('http://api.dev.cmtyomg.com/cto1/host/group').then((response) => {
+                await this.axios.get('/host/group').then((response) => {
                     this.items = response.data.data;
                 })
             },
             async deleteGroup(id){
-                await this.axios.delete('http://api.dev.cmtyomg.com/cto1/host/group', {
+                await this.axios.delete('/host/group', {
                     data: {
                         id: id
                     }
