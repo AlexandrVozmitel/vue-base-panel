@@ -51,10 +51,8 @@
         methods: {
             async changeGroup() {
                 await this.axios.put('/host/group/' + this.group_id, {
-                    data: {
-                        name: this.name,
-                        code: this.code,
-                    }
+                    name: this.name,
+                    code: this.code,
                 })
             },
             async getRequest() {
