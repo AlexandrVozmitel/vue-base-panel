@@ -12,7 +12,7 @@
 			<b-button block type="submit" variant="dark">Reset</b-button>
 
 			<p class="forgot-password text-right mt-2 mb-4">
-				<router-link to="/sign-in">Sign in?</router-link>
+				<router-link :to="{name: 'signIn'}">Sign in?</router-link>
 			</p>
 
 		</form>

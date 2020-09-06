@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.min.css'
 
 
 Vue.use(VueAxios, axios);
@@ -11,12 +18,6 @@ Vue.use(IconsPlugin);
 // Загрузка шаблонов
 import MainLayout from "./layouts/main/index";
 import EmptyCenterLayout from "./layouts/empty-center/index";
-
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 
 // Регистрация шаблонов
 Vue.component('main-layout', MainLayout);

@@ -9,9 +9,9 @@
                 show-empty
         >
             <template v-slot:cell(action)="row">
-                <b-button :to="{name: 'groupEdit', params: {group_id: row.item.id}}">Изменение</b-button>
+                <b-button :to="{name: 'hostGroupEdit', params: {group_id: row.item.id}}">Изменение</b-button>
                 <b-button v-on:click="deleteGroup(row.item.id)">Удалить</b-button>
-                <b-button :to="{name: 'groupLink', params: {group_id: row.item.id}}">Связи</b-button>
+                <b-button :to="{name: 'hostGroupLink', params: {group_id: row.item.id}}">Связи</b-button>
             </template>
             <template v-slot:empty>
                 <h4 class="text-center">Нет данных</h4>

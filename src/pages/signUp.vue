@@ -35,7 +35,7 @@
 
             <p class="forgot-password text-right">
                 Already registered
-                <router-link to="/sign-in">sign in?</router-link>
+                <router-link :to="{name: 'signIn'}">sign in?</router-link>
             </p>
         </b-form>
     </div>
