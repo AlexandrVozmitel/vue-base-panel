@@ -1,17 +1,17 @@
 <template>
     <div>
-        <b-form>
+        <b-form @submit.prevent="login">
             <h3>Sign In</h3>
 
             <b-form-group
                 label="Login"
             >
-                <b-form-input></b-form-input>
+                <b-form-input v-model="form.login"></b-form-input>
             </b-form-group>
             <b-form-group
                 label="Password"
             >
-                <b-form-input type="password"></b-form-input>
+                <b-form-input v-model="form.password" type="password"></b-form-input>
             </b-form-group>
 
             <b-button block type="submit" variant="dark">Sign In</b-button>
@@ -28,5 +28,25 @@
     </div>
 </template>
 <script>
-
+    export default {
+        data: () => ({
+            form: {
+                login:'',
+                password:'',
+            },
+        }),
+        methods: {
+            login() {
+                this.axios.post('http://api.dev.cmtyomg.com/cto1/login', this.form)
+                    .then(function (response) { // handle success
+                        console.log('response', response);
+                    })
+                    .catch(function (error) { // handle error
+                        console.log('error', 'response', error.response);
+                        // request info
+                        console.log('error', 'request', error.config);
+                    });
+            },
+        },
+    };
 </script>
