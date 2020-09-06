@@ -25,37 +25,37 @@
                 required: true,
             },
         },
-        data(){
-            return {
-                fields: [
-                    {
-                        label: 'Name',
-                        key: 'name',
-                        sortable: true
-                    },
-                    {
-                        label: 'Type',
-                        key:'type',
-                        sortable: true
-                    },
-                    {
-                        label: 'Ip',
-                        key:'ip',
-                        sortable: true
-                    },
-                    {
-                        label: 'Domain',
-                        key:'domain_name',
-                        sortable: true
-                    },
-                    {
-                        label: '',
-                        key:'action',
-                    },
-                ],
-                items: [],
-            };
-        },
+        data: () => ({
+            fields: [
+                {
+                    label: 'Name',
+                    key: 'name',
+                    sortable: true
+                },
+                {
+                    label: 'Type',
+                    key:'type',
+                    sortable: true
+                },
+                {
+                    label: 'Ip',
+                    key:'ip',
+                    sortable: true
+                },
+                {
+                    label: 'Domain',
+                    key:'domain_name',
+                    sortable: true
+                },
+                {
+                    label: '',
+                    key:'action',
+                },
+            ],
+            items: [
+
+            ],
+        }),
         methods:{
             async getRequest() {
                 this.id = window.location.pathname.split("/")[2];

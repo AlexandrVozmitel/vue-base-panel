@@ -23,33 +23,33 @@
         created() {
             this.getRequest()
         },
-        data() {
-            return {
-                fields: [
-                    {
-                        label: 'Name',
-                        key: 'name',
-                        sortable: true
-                    },
-                    {
-                        label: 'Login',
-                        key: 'login',
-                        sortable: true
-                    },
-                    {
-                        label: 'Email',
-                        key: 'email',
-                        sortable: true
-                    },
-                    {
-                        label: 'Actions',
-                        key: 'id',
-                        sortable: false
-                    },
-                ],
-                items: [],
-            };
-        },
+        data: () => ({
+            fields: [
+                {
+                    label: 'Name',
+                    key: 'name',
+                    sortable: true
+                },
+                {
+                    label: 'Login',
+                    key: 'login',
+                    sortable: true
+                },
+                {
+                    label: 'Email',
+                    key: 'email',
+                    sortable: true
+                },
+                {
+                    label: 'Actions',
+                    key: 'id',
+                    sortable: false
+                },
+            ],
+            items: [
+
+            ],
+        }),
         methods: {
             async getRequest() {
                 await this.axios.get('/user/list',

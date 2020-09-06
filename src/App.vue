@@ -7,11 +7,11 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      layout() {
-        return (this.$route.meta.layout || 'empty-center') + '-layout';
-      }
-    }
-  };
+    export default {
+        computed: {
+            layout() {
+                return (this.$route.meta.layout || 'empty-center') + '-layout';
+            }
+        }
+    };
 </script>
