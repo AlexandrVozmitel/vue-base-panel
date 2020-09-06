@@ -9,11 +9,11 @@
                                 <b-input-group>
                                     <b-col>
                                         <label>Name</label>
-                                        <b-form-input v-model="names">
+                                        <b-form-input v-model="name">
 
                                         </b-form-input>
                                         <label>Code</label>
-                                        <b-form-input v-model="codes">
+                                        <b-form-input v-model="code">
 
                                         </b-form-input>
                                     </b-col>
@@ -45,29 +45,26 @@
             },
         },
         data: () => ({
-            codes: '',
-            names: '',
+            code: '',
+            name: '',
         }),
         methods: {
             async changeGroup() {
-                await this.axios.put('/host/group', {
+                await this.axios.put('/host/group/' + this.group_id, {
                     data: {
-                        id: this.group_id,
-                        name: this.names,
-                        code: this.codes,
+                        name: this.name,
+                        code: this.code,
                     }
                 })
             },
             async getRequest() {
-                await this.axios.get('/host/group').then((response) => {
-                    response.data.data.forEach((item) => {
-                        if (item.id == this.group_id) {
-                            console.log(item);
-                            this.names = item.name;
-                            this.codes = item.code;
-                        }
-                    });
-                })
+                await this.axios.get('/host/group/' + this.group_id)
+                    .then((response) => {
+                        let data = response.data.data;
+
+                        this.code = data.code;
+                        this.name = data.name;
+                    })
             },
         },
 

@@ -50,12 +50,17 @@
                     this.items = response.data.data;
                 })
             },
-            async deleteGroup(id){
-                await this.axios.delete('/host/group', {
-                    data: {
-                        id: id
-                    }
-                })
+            deleteGroup(id) {
+                this.axios.delete('/host/group/' + id)
+                    .then((response) => {
+                        if (response.data) {
+                            this.items.find((element, index, array) => {
+                                if (element && element.id === id) {
+                                    array.splice(index, 1);
+                                }
+                            })
+                        }
+                    });
             },
         }
     };
