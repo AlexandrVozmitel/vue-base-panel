@@ -22,20 +22,21 @@
             <b-form-group
                     label="Password"
             >
-                <b-form-input v-model="form.password" type="password" required></b-form-input>
+                <b-form-input v-model="form.password" type="password" :state="passwordValid()" required></b-form-input>
             </b-form-group>
 
             <b-form-group
                     label="Confirm the password"
             >
-                <b-form-input v-model="confirm.password" type="password" required></b-form-input>
+                <b-form-input v-model="confirm.password" v-on:input="boo()" :state="passwordConfirm()" type="password"
+                              required></b-form-input>
             </b-form-group>
 
             <b-button block type="submit" variant="dark">Sign Up</b-button>
 
             <p class="forgot-password text-right">
                 Already registered
-                <router-link :to="{name: 'signIn'}">sign in?</router-link>
+                <router-link :to="{name: 'signIn'}">Sign in?</router-link>
             </p>
         </b-form>
     </div>
@@ -47,11 +48,12 @@
                 password: '',
             },
             form: {
-                login:'',
-                name:'',
-                email:'',
-                password:'',
+                login: '',
+                name: '',
+                email: '',
+                password: '',
             },
+            check: false,
         }),
         methods: {
             register() {
@@ -65,6 +67,20 @@
                         console.log('error', 'request', error.config);
                     });
             },
+            passwordConfirm() {
+                if (this.check) {
+                    if (this.form.password === this.confirm.password) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            },
+            boo() {
+                this.check = true
+            },
+            passwordValid() {
+            }
         },
     };
 </script>
