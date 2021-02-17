@@ -53,42 +53,6 @@ const routes = [
     },
   },
 
-  // Раздел Хостов
-  {
-    path: '/host-group',
-    name: 'hostGroup',
-    component: () => import('./pages/host/group'),
-    meta: {
-      layout: 'main',
-    },
-  },
-  {
-    path: '/host-group/new',
-    name: 'hostGroupCreate',
-    component: () => import('./pages/host/groupCreate'),
-    meta: {
-      layout: 'main',
-    },
-  },
-  {
-    path: '/host-group/:group_id',
-    name: 'hostGroupEdit',
-    component: () => import('./pages/host/groupEdit'),
-    props: true,
-    meta: {
-      layout: 'main',
-    },
-  },
-  {
-    path: '/host-group/:group_id/link',
-    name: 'hostGroupLink',
-    component: () => import('./pages/host/groupLink'),
-    props: true,
-    meta: {
-      layout: 'main',
-    },
-  },
-
 
 
   // Админские маршруты

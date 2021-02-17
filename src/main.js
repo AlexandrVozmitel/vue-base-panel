@@ -3,16 +3,12 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import store from './store';
 
-
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-vue/dist/bootstrap-vue.min.css'
+import vuetify from './plugins/vuetify'
 
 
 Vue.use(VueAxios, axios);
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
 
 
 // Загрузка шаблонов
@@ -29,5 +25,7 @@ axios.defaults.baseURL = 'http://api.dev.cmtyomg.com/cto1';
 
 new Vue({
   router,
+  store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app');
