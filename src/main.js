@@ -21,7 +21,7 @@ Vue.component('empty-center-layout', EmptyCenterLayout);
 
 
 Vue.config.productionTip = false;
-axios.defaults.baseURL = 'http://api.dev.cmtyomg.com/cto1';
+axios.defaults.baseURL = 'http://api.dev.cmtyomg.com';
 
 new Vue({
   router,

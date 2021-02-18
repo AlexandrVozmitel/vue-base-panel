@@ -1,7 +1,7 @@
 <template>
-	<b-container>
+	<v-container>
 		<slot/>
-	</b-container>
+	</v-container>
 </template>
 
 <style scoped>
