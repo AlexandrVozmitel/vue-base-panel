@@ -31,6 +31,9 @@ export default new Vuex.Store({
         add(state, data) {
             state[data.type].data = state[data.type].push(data)
         },
+        change(state, data) {
+            state[data.type].data.find(it=>it.id===data.id)
+        },
         clear(state, data) {
             state[data.type] = []
         },

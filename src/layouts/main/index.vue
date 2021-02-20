@@ -36,6 +36,7 @@
 <!--        </v-navigation-drawer>-->
         <v-app-bar app dark>
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+            <v-btn icon @click="getColumn()" v-on:click="getCards()"><v-icon>mdi-reload</v-icon></v-btn>
             <v-spacer></v-spacer>
             <v-toolbar-items>
                 <img alt="" v-if="!$store.getters.phone" width="150px" @click="$router.push({name: 'home'})"
@@ -84,6 +85,18 @@
                 } else {
                     this.$store.commit('set', {type: "phone", data: true})
                 }
+            },
+            getColumn() {
+                this.axios.get("/bigCardGet.php")
+                    .then((response) => {
+                        this.$store.commit('set', {type: "bigCards", data:response.data.data})
+                    })
+            },
+            getCards() {
+                this.axios.get("/smallCardGet.php")
+                    .then((response) => {
+                        this.$store.commit('set', {type: "smallCards", data:response.data.data})
+                    })
             },
         },
     }

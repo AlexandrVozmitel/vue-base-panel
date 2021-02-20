@@ -1,8 +1,10 @@
 <template>
     <v-container fluid style="height: 88vh">
         <div class="d-flex flex-auto flex-row  position-relative" style=" overflow: auto; width: 100vw; height:100%">
-               <draggable group="big" v-bind="dragOptions" class="d-flex flex-auto flex-row  position-relative"> <todo-big-card v-for="item in $store.getters.bigCards" :key="item.id" :info="item.data"
-                               :items="cardsCheck(item.id)"></todo-big-card></draggable>
+            <draggable group="big" v-bind="dragOptions" class="d-flex flex-auto flex-row  position-relative">
+                <todo-big-card v-for="item in this.$store.getters.bigCards" :key="item.id" :info="item"
+                ></todo-big-card>
+            </draggable>
             <v-spacer></v-spacer>
             <v-dialog transition="dialog-top-transition" max-width="450">
                 <template v-slot:activator="{ on, attrs }">
@@ -37,36 +39,41 @@
 <script>
     import todoBigCard from "./components/todoBigCard";
     import draggable from "vuedraggable";
+
     export default {
         name: 'home',
-        components: {todoBigCard,draggable},
+        components: {todoBigCard, draggable},
+        created() {
+            this.getColumn()
+            this.getCards()
+        },
         data() {
             return {
                 themeAdd: '',
-                smallCards: this.this.$store.getters.smallCards,
+               // smallCards: this.this.$store.getters.smallCards,
             }
         },
         methods: {
-            cardsCheck(id) {
-                let trueCard = []
-                for (const prop in this.smallCards) {
-                    if (this.items1[prop].cardId === id) {
-                        trueCard.push({
-                            id: this.items1[prop].id,
-                            author: this.items1[prop].author,
-                            message: this.items1[prop].message,
-                            cols: this.cols,
-                        })
-                    }
-                }
-                return trueCard
+            getColumn() {
+                this.axios.get("/bigCardGet.php")
+                    .then((response) => {
+                        this.$store.commit('set', {type: "bigCards", data:response.data.data})
+                    })
             },
-            addColumn() {
-                this.$store.commit("add", {
-                    type: 'bigCards',
-                    data: {id: Math.random(Math.random() * Math.floor(1000)*1000), theme: this.themeAdd}
-                })
-                this.themeAdd = ''
+            getCards() {
+                this.axios.get("/smallCardGet.php")
+                    .then((response) => {
+                        this.$store.commit('set', {type: "smallCards", data:response.data.data})
+                    })
+            },
+            addColumn(){
+              this.axios.post("/bigCardAdd.php",{
+                  theme:this.themeAdd
+              }).then((response)=>{
+                  response.data
+                  this.getColumn()
+                  this.themeAdd=""
+              })
             },
         },
         computed: {
