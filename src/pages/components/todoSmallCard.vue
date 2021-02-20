@@ -1,9 +1,8 @@
 <template>
-    <v-card  rounded style="font-size:14px;cursor: move; margin-bottom: 20px; width: 100%">
+    <v-card :id="info.id" rounded style="font-size:14px;cursor: move; margin-bottom: 20px; width: 100%">
         <v-row>
             <v-col cols="1" style="padding-left: 15px">
                 <v-icon dense>mdi-card-text-outline</v-icon>
-                {{index}}
             </v-col>
             <v-col cols="9">
                 <div>{{this.info.message}}</div>

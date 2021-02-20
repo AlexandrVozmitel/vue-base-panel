@@ -43,7 +43,8 @@
                                                               placeholder="Enter a text"></v-text-field>
                                             </v-container>
                                             <v-card-actions class="justify-end">
-                                                <v-btn outlined color="success" v-on:click="changeColumn()" @click="dialog.value = false">
+                                                <v-btn outlined color="success" v-on:click="changeColumn()"
+                                                       @click="dialog.value = false">
                                                     Change column
                                                 </v-btn>
                                                 <v-spacer></v-spacer>
@@ -54,7 +55,8 @@
                                 </v-dialog>
                             </v-list-item>
                             <v-list-item>
-                                <v-list-item-title style="cursor: pointer" @click="delColumn()">Удалить колонку</v-list-item-title>
+                                <v-list-item-title style="cursor: pointer" @click="delColumn()">Удалить колонку
+                                </v-list-item-title>
                             </v-list-item>
                         </v-list>
                     </v-menu>
@@ -73,10 +75,11 @@
                     Cancel
                 </v-btn>
             </div>
-            <draggable v-bind="dragOptions" style="margin-top: 20px; height: 90%">
+            <draggable v-bind="dragOptions" @end="checkMove" style="margin-top: 20px; height: 90%"
+                       :list="$store.getters.smallCards.filter(c=>c.colsId===this.info.id)">
                 <todoSmallCard group="small"
-                               v-for="(item, index) in $store.getters.smallCards.filter(c=>c.colsId===this.info.id)"
-                               :key="item.id" :index="index"
+                               v-for="(item) in $store.getters.smallCards.filter(c=>c.colsId===this.info.id)"
+                               :key="item.id"
                                :info="item"></todoSmallCard>
             </draggable>
         </v-container>
@@ -117,7 +120,7 @@
             changeColumn() {
                 this.axios.post("/bigCardChange.php", {
                     id: this.info.id,
-                    theme:this.info.theme
+                    theme: this.info.theme
                 })
                     .then((response) => {
                         response.data
@@ -143,6 +146,21 @@
                         response.data
                         this.getColumn()
                     })
+            },
+            checkMove: function (evt) {
+                this.axios.post("/smallCardMove.php", {
+                    id: evt.item.id, colsId: evt.to.offsetParent.id, inde: evt.newIndex
+                }).then((response) => {
+                    response.data
+                    this.getCards()
+                    this.$store.commit('changePosCard', {
+                        data: {
+                            id: evt.item.id,
+                            colsId: evt.to.offsetParent.id,
+                            inde: evt.newIndex
+                        }
+                    })
+                })
             },
         },
         computed: {

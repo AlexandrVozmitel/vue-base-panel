@@ -37,5 +37,12 @@ export default new Vuex.Store({
         clear(state, data) {
             state[data.type] = []
         },
+        changePosCard(state,data){
+            state.smallCards.find(c =>c.id===data.data.id).inde=data.data.inde
+            state.smallCards.find(c =>c.id===data.data.id).colsId=data.data.colsId
+        },
+        moved(state,data){
+          state[data.type].find(c =>c.id===data.data.id).inde=data.data.inde
+        },
     },
 });

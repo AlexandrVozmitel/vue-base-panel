@@ -1,11 +1,11 @@
 <template>
     <v-container fluid style="height: 88vh">
         <div class="d-flex flex-auto flex-row  position-relative" style=" overflow: auto; width: 100vw; height:100%">
-            <draggable group="big" v-bind="dragOptions" class="d-flex flex-auto flex-row  position-relative">
+            <draggable group="big" :list="this.$store.getters.bigCards" @change="log" v-bind="dragOptions"
+                       class="d-flex flex-auto flex-row  position-relative">
                 <todo-big-card v-for="item in this.$store.getters.bigCards" :key="item.id" :info="item"
                 ></todo-big-card>
             </draggable>
-            <v-spacer></v-spacer>
             <v-dialog transition="dialog-top-transition" max-width="450">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn color="#121212" min-width="335px" v-bind="attrs" v-on="on" style="font-size:14px">
@@ -50,30 +50,42 @@
         data() {
             return {
                 themeAdd: '',
-               // smallCards: this.this.$store.getters.smallCards,
+                // smallCards: this.this.$store.getters.smallCards,
             }
         },
         methods: {
             getColumn() {
                 this.axios.get("/bigCardGet.php")
                     .then((response) => {
-                        this.$store.commit('set', {type: "bigCards", data:response.data.data})
+                        this.$store.commit('set', {type: "bigCards", data: response.data.data})
                     })
             },
             getCards() {
                 this.axios.get("/smallCardGet.php")
                     .then((response) => {
-                        this.$store.commit('set', {type: "smallCards", data:response.data.data})
+                        this.$store.commit('set', {type: "smallCards", data: response.data.data})
                     })
             },
-            addColumn(){
-              this.axios.post("/bigCardAdd.php",{
-                  theme:this.themeAdd
-              }).then((response)=>{
-                  response.data
-                  this.getColumn()
-                  this.themeAdd=""
-              })
+            addColumn() {
+                this.axios.post("/bigCardAdd.php", {
+                    theme: this.themeAdd
+                }).then((response) => {
+                    response.data
+                    this.getColumn()
+                    this.themeAdd = ""
+                })
+            },
+            log(evt) {
+                this.axios.post("/bigCardMove.php", {
+                    id: evt.moved.element.id, inde: evt.newIndex
+                }).then((response) => {
+                    response.data
+                    this.getColumn()
+                    this.$store.commit("moved", {
+                        type: "bigCards",
+                        data: {id: evt.moved.element.id, inde: evt.moved.newIndex}
+                    })
+                })
             },
         },
         computed: {
